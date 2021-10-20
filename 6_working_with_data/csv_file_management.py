@@ -1,4 +1,5 @@
 import csv
+import sys
 
 
 class CsvFileManagement:
@@ -35,7 +36,7 @@ class CsvFileManagement:
             csv_reader = csv.reader(csv_in_file)
             header_rows = next(csv_reader)
 
-        new_info_line = [input(f"Enter new {header_row}: ")for header_row in header_rows]
+        new_info_line = [input(f"Enter new {header_row}: ") for header_row in header_rows]
 
         with open(self.file_path, 'a+', newline='') as csv_out_file:
             new_info_writer = csv.writer(csv_out_file)
@@ -79,16 +80,20 @@ class CsvFileManagement:
         4 - Delete a record from the file
         >> 
         """
+
+        conducted_action = {
+            1: self.show_information_in_csv,
+            2: sys.exit,
+            3: self.append_new_data_to_file,
+            4: self.delete_record_from_file
+        }
+
         while True:
             user_answer = int(input(user_prompt))
-            if user_answer == 1:
-                self.show_information_in_csv()
-            elif user_answer == 2:
-                break
-            elif user_answer == 3:
-                self.append_new_data_to_file()
-            elif user_answer == 4:
-                self.delete_record_from_file()
+            try:
+                conducted_action[user_answer]()
+            except KeyError:
+                print("Invalid user input")
 
 
 if __name__ == '__main__':
