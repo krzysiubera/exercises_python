@@ -102,6 +102,11 @@ class ComplexNumber:
     def __le__(self):
         self._illegal('<=')
 
+    # read only
+    @property
+    def conjugate(self):
+        return ComplexNumber(self.real, -self.imag)
+
 
 if __name__ == '__main__':
     # example of usage
@@ -117,3 +122,5 @@ if __name__ == '__main__':
 
     num3 = 12
     print(f"Adding float to complex number: {num1 + num3}")
+
+    print(f"Conjugate of {num2} = {num2.conjugate}")
