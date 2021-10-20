@@ -1,5 +1,4 @@
 import cmath
-import re
 
 
 class ComplexNumber:
@@ -10,6 +9,30 @@ class ComplexNumber:
     def __init__(self, real, imag=0.0):
         self.real = real
         self.imag = imag
+
+    @classmethod
+    def from_string(cls, number_as_str):
+        """
+        Alternative constructor for ComplexNumber class. It accepts complex number as a string, for example '2.1+4.2j'
+        and creates a ComplexNumber object
+        """
+        new_str = None
+        sign = None
+        signs = ['+', '-']
+        for idx, char in enumerate(number_as_str):
+            if char in signs:
+                sign = number_as_str[idx]
+                new_str = number_as_str.replace(sign, " ")
+                break
+
+        if new_str is None or sign is None:
+            raise RuntimeError("Incorrect string has been passed to the constructor of ComplexNumber class")
+        else:
+            real, imag = new_str.split()
+            imag = imag[:-1]
+            real, imag = float(real), float(imag)
+            imag = imag if sign == '+' else -imag
+            return cls(real, imag)
 
     def __repr__(self):
         return f"({self.real}{'+' if self.imag >= 0 else '-'}{abs(self.imag)}j)"
