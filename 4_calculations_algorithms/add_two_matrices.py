@@ -9,6 +9,7 @@ B = [[random.random() for _ in range(dim_of_matrix)] for _ in range(dim_of_matri
 result = [[A[i][j] + B[i][j] for j in range(dim_of_matrix)] for i in range(dim_of_matrix)]
 
 if np.allclose(result, np.add(A, B)):
+    # not printing the matrix because it is large
     print("Correct result")
 else:
     print("Wrong result")

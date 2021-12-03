@@ -26,7 +26,7 @@ class ComplexNumber:
                 break
 
         if new_str is None or sign is None:
-            raise RuntimeError("Incorrect string has been passed to the constructor of ComplexNumber class")
+            raise ValueError("Incorrect string has been passed to the constructor of ComplexNumber class")
         else:
             real, imag = new_str.split()
             imag = imag[:-1]

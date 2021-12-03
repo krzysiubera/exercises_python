@@ -1,4 +1,4 @@
-user_input = input("Enter your name, surname and birth year. Separate values by comma. \n> ")
+user_input = input("Enter your name, surname and birth year. Separate values by comma and space. \n> ")
 try:
     name, surname, birth_year = user_input.split(", ")
 except ValueError:
