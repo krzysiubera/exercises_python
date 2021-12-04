@@ -1,9 +1,9 @@
-<people>
-    <person number = "1">
-        <name>Krzysztof</name>
+<?xml version="1.0" ?><people>
+    <person number="1">
+        <name>changed</name>
         <surname>Bera</surname>
     </person>
-    <person number = "2">
+    <person number="2">
         <name>Pawel</name>
         <surname>Skrzyniarz</surname>
     </person>
